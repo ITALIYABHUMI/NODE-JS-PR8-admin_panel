@@ -1,0 +1,62 @@
+<%- include('../header') %>
+<div class="unix-login">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="login-content">
+                    <div class="login-form">
+                        <h4>Product</h4>
+                        <form method="post" action="/updateproduct" enctype="multipart/form-data">
+                            <input type="hidden" value="<%=data.id%>" name="id">
+                            <div class="form-group mb-4">
+                                <label>Category </label>
+                                <select name="category" class="form-control">
+                                    <%category.map((val)=>{%>
+                                    <option value="<%=val.id%>"><%=val.category%></option>
+                                    <%})%>
+                                </select>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label>SubCategory </label>
+                                <select name="subcategory" class="form-control">
+                                    <%subcategory.map((val)=>{%>
+                                    <option value="<%=val.id%>"><%=val.subcategory%></option>
+                                    <%})%>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Product Name</label>
+                                <input type="text" class="form-control"
+                                    name="product" placeholder="Product"
+                                    value="<%=data.product%>">
+                            </div>
+                            <div class="form-group"> 
+                                <label>Image </label>
+                                <input type="file" class="form-control"
+                                    name="image" value="<%=data.image%>">
+                            </div>
+                            <div class="form-group"> 
+                                <label>Qty </label>
+                                <input type="text" class="form-control"
+                                    name="qty" value="<%=data.qty%>">
+                            </div>
+                            <div class="form-group"> 
+                                <label>Price </label>
+                                <input type="text" class="form-control"
+                                    name="price" value="<%=data.price%>">
+                            </div>
+                            <div class="form-group"> 
+                                <label>Description </label>
+                                <input type="text" class="form-control"
+                                    name="description" value="<%=data.description%>">
+                            </div>
+                            <input type="submit"
+                                class="btn btn-primary btn-flat m-b-30 m-t-30">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../footer') %>

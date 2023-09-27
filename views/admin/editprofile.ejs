@@ -1,0 +1,55 @@
+<%- include('../header') %>
+
+<div class="unix-login">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="login-content border border-secondary">
+                    <div class="login-form">
+                        <h4>MY PROFILE</h4>
+                        <form method="post" action="/updateprofile">
+                            <table>
+                                <tr>
+                                    <td><input type="hidden" name="id" value="<%=record.id%>"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="hidden" value="<%=record.id%>" name="id">
+                                    </td>
+                                </tr>
+                                <tr class="form-group">
+                                    <td class="p-3">Name :</td>
+                                    <td><input type="text"  name="name"
+                                            class="form-control border border-dark"
+                                            value="<%=record.name%>"></td>
+                                </tr>
+                                <tr class="form-group">
+                                    <td class="p-3">Email :</td>
+                                    <td><input type="email" name="email"
+                                            class="form-control border border-dark"
+                                            value="<%=record.email%>"></td>
+                                </tr>
+                                <tr class="form-group">
+                                    <td class="p-3">Password :</td>
+                                    <td><input type="password" name="password"
+                                            class="form-control border border-dark"
+                                            value="<%=record.password%>"></td>
+                                </tr>
+                                <tr>
+                                    <td> 
+                                        <button
+                                            class="btn btn-primary py-2 mt-4">
+                                            <a class="text-white">Submit</a>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../footer') %>

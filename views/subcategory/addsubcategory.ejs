@@ -1,0 +1,35 @@
+<%- include('../header') %>
+<div class="unix-login">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="login-content">
+                    <div class="login-form">
+                        <h4>SubCategory</h4>
+                        <form method="post" action="/subcategoryAdd">
+                            <div class="form-group mb-4">
+                                <label>Category </label>
+                                <select name="category" class="form-control">
+                                    <option>-----  selesct category  -----</option>
+                                    <%data.map((val)=>{%>
+                                    <option value="<%=val.id%>"><%=val.category%></option>
+                                    <%})%>
+                                </select>
+                            </div>
+                            <div class="form-group"> 
+                                <label>SubCategory </label>
+                                <input type="text" class="form-control"
+                                    name="subcategory" placeholder="subcategory">
+                            </div>
+                            <input type="submit"
+                                class="btn btn-primary btn-flat m-b-30 m-t-30">
+                        </form>
+                    </div>
+                    <a href="/subcategory" class="btn btn-primary mx-2 mt-3">
+                        SubCategory</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../footer') %>

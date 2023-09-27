@@ -1,0 +1,27 @@
+<%- include('../header') %>
+<div class="unix-login">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="login-content">
+                    <div class="login-form">
+                        <h4>Edit Category</h4>
+                        <form method="post" action="/updatecategory">
+                            <input type="hidden" name="id" value="<%=record.id%>">
+                            <div class="form-group">
+                                <label>Category </label>
+                                <input type="text" class="form-control"
+                                    name="category" value="<%=record.category%>" placeholder="category">
+                            </div>
+                            <input type="submit"
+                                class="btn btn-primary btn-flat m-b-30 m-t-30">
+                        </form>
+                    </div>
+                    <a href="/categories" class="btn btn-primary mx-2 mt-3">
+                        Category</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../footer') %>

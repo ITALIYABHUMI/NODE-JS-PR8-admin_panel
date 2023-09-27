@@ -1,0 +1,36 @@
+<%- include('../header') %>
+<div class="unix-login">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="login-content">
+                    <div class="login-form">
+                        <h4>Category</h4>
+                        <% if(message.success){ %>
+                        <div class="alert alert-info" role="alert">
+                            <%= message.success %>
+                        </div>
+                        <% } %>
+                        <% if(message.error){ %>
+                            <div class="alert alert-danger" role="alert">
+                                <%= message.error %>
+                            </div>
+                            <% } %>
+                        <form method="post" action="/categoriesAdd">
+                            <div class="form-group">
+                                <label>Category </label>
+                                <input type="text" class="form-control"
+                                    name="category" placeholder="category">
+                            </div>
+                            <input type="submit"
+                                class="btn btn-primary btn-flat m-b-30 m-t-30">
+                        </form>
+                    </div>
+                    <a href="/categories" class="btn btn-primary mx-2 mt-3">
+                        Category</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../footer') %>
