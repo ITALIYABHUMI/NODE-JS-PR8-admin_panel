@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const categorytbl = require('../model/category')
+const categorytbl = require('../model/category');
+const subcategorytbl = require('../model/subcategory');
 
 const categories = async (req, res) => {
     try {
@@ -29,12 +30,10 @@ const categoriesAdd = async (req, res) => {
             category: category
         })
         if (data) {
-            console.log("category is added");
             req.flash('success', "category is added");
             return res.redirect('back');
         }
         else {
-            console.log("category is not added");
             req.flash('error', "category is not added");
             return res.redirect('back')
         }
@@ -47,17 +46,21 @@ const categoriesAdd = async (req, res) => {
 
 const deletecategory = async (req, res) => {
     try {
-        id = req.params.id;
-        let record = await categorytbl.findByIdAndDelete(id);
-        if (record) {
-            req.flash('success', "Record successfully deleted")
-            return res.redirect('back');
+        let id = req.params.id;
+        const category = await categorytbl.findByIdAndRemove(id);
+        if (!category) {
+            req.flash('error', "category not found");
+        }
+        else {
+            await subcategorytbl.deleteMany({ categoryId: id });
+            req.flash('success', "Category and related subcategories deleted successfully");
         }
     } catch (err) {
-        console.log(err);
+        console.error(err);
     }
-}
 
+}
+ 
 const editcategory = async (req, res) => {
     try {
         id = req.query.id;

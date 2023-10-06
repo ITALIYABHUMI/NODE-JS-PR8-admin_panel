@@ -1,17 +1,17 @@
 const categorytbl = require('../model/category')
 const subcategorytbl = require('../model/subcategory');
 const producttbl = require('../model/product');
+const fs = require('fs');
 
 const product = async (req, res) => {
     try {
         let data = await producttbl.find({}).populate('categoryId').populate('subcategoryId');
-        console.log(data);
         if (data) {
             return res.render('product/product', {
                 data
             });
         }
-    }
+    } 
     catch (err) {
         console.log(err);
         return false;
@@ -40,7 +40,7 @@ const productAdd = async (req, res) => {
     if (req.file) {
         image = req.file.path;
     }
-    try {
+    try { 
         let data = await producttbl.create({
             categoryId: req.body.category,
             subcategoryId: req.body.subcategory,

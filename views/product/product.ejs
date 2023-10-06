@@ -34,7 +34,8 @@
                 %>
                 <div class="card col-3 mx-5"
                     style="width: 100%;">
-                    <img src="<%=val.image%>" class="card-img-top " alt="..." style="width: 100%;;height: 200px; object-fit:contain">
+                    <img src="<%=val.image%>" class="card-img-top " alt="..."
+                        style="width: 100%;;height: 200px; object-fit:contain">
                     <div class="card-body">
                         <ul class="list-group list-group-flush mt-3">
                             <li class="list-group-item p text-dark">Category : <%=val.categoryId.category%></li>
@@ -47,18 +48,14 @@
                                 <%=val.description%></li>
                         </ul>
                         <div class="mt-4 mx-3">
-                            <button
-                                class="btn btn-danger">
-                                <a
-                                    href="/deleteproduct/<%=val.id%>"
-                                    class="fa fa-trash text-white"></a>
-                            </button>
-                            <button
-                                class="btn btn-primary mx-3">
-                                <a
-                                    href="/editproduct?id=<%=val.id%>"
-                                    class="fa fa-edit text-white "></a>
-                            </button>
+                            <a
+                                href="/deleteproduct/<%=val.id%>">
+                                <button
+                                    class="btn btn-danger fa fa-trash text-white"></button></a>
+                            <a
+                                href="/editproduct?id=<%=val.id%>">
+                                <button
+                                    class="btn btn-primary fa fa-edit text-white"></button></a>
                         </div>
                     </div>
                 </div>

@@ -32,7 +32,21 @@
                             <div class="card-title">
                                 <h4>Table Basic </h4>
                             </div>
-
+                            <% if(message.success){ %>
+                            <div class="alert alert-primary" role="alert">
+                                <%= message.success %>
+                            </div>
+                            <% } %>
+                            <% if(message.update){ %>
+                            <div class="alert alert-primary" role="alert">
+                                <%= message.update %>
+                            </div>
+                            <% } %>
+                            <% if(message.error){ %>
+                            <div class="alert alert-danger" role="alert">
+                                <%= message.error %>
+                            </div>
+                            <% } %>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table">
@@ -44,28 +58,25 @@
                                                 <th>Action</th>
                                             </tr>
                                             <% data.map((val,i)=>{
-                                                i++
-                                                %>
-                                                <tr>
-                                                    <td><%=i%></td>
-                                                    <td><%=val.categoryId.category%></td>
-                                                    <td><%=val.subcategory%></td>
-                                                    <td class="d-flex justify-content-end">
+                                            i++
+                                            %>
+                                            <tr>
+                                                <td><%=i%></td>
+                                                <td><%=val.categoryId.category%></td>
+                                                <td><%=val.subcategory%></td>
+                                                <td
+                                                    class="d-flex justify-content-end">
+                                                    <a
+                                                        href="/deletesubcategory/<%=val.id%>">
                                                         <button
-                                                            class="btn btn-danger mx-3">
-                                                            <a
-                                                                href="/deletesubcategory/<%=val.id%>"
-                                                                class="fa fa-trash text-white"></a>
-                                                        </button>
+                                                            class="btn btn-danger fa fa-trash text-white"></button></a>
+                                                    <a
+                                                        href="/editsubcategory?id=<%=val.id%>">
                                                         <button
-                                                            class="btn btn-primary ms-3">
-                                                            <a
-                                                                href="/editsubcategory?id=<%=val.id%>"
-                                                                class="fa fa-edit text-white "></a>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <%})%>
+                                                            class="btn btn-primary fa fa-edit text-white"></button></a>
+                                                </td>
+                                            </tr>
+                                            <%})%>
                                         </thead>
 
                                     </table>

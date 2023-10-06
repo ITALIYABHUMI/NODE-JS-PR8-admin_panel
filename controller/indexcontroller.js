@@ -1,6 +1,6 @@
 const registertbl = require('../model/form');
 const nodemailer = require('nodemailer');
-var cookie = require('cookie-parser');
+const cookie = require('cookie-parser');
 const passport = require('passport');
 
 
@@ -27,18 +27,25 @@ const registerdata = async (req, res) => {
     const { name, email, password, cpassword } = req.body;
     if (password == cpassword) {
         try {
-            let data = await registertbl.create({
-                name: name,
-                email: email,
-                password: password,
-            })
-            if (data) {
-                req.flash('success', 'You are registered');
-                return res.redirect('back');
+            let emaildata = await registertbl.findOne({ email: email });
+            if (email == emaildata.email) {
+                req.flash('error', "this email is already registered");
+                return res.redirect('back')
             }
             else {
-                req.flash('error', 'You are not registered');
-                return res.redirect('back')
+                let data = await registertbl.create({
+                    name: name,
+                    email: email,
+                    password: password,
+                })
+                if (data) {
+                    req.flash('success', 'You are registered');
+                    return res.redirect('back');
+                }
+                else {
+                    req.flash('error', 'You are not registered');
+                    return res.redirect('back')
+                }
             }
         }
         catch (err) {
@@ -142,7 +149,7 @@ const changepassword = (req, res) => {
 }
 
 const otp = (req, res) => {
-    return res.render('otp');
+    return res.render('admin/otp');
 }
 
 const otpdata = (req, res) => {
@@ -181,7 +188,6 @@ const updatepassword = async (req, res) => {
             else {
                 console.log("Password not changed");
                 return res.redirect('back')
-                return false;
             }
         }
         catch (err) {
@@ -198,7 +204,6 @@ const updatepassword = async (req, res) => {
 
 const passwordData = async (req, res) => {
     let id = req.body.id;
-    console.log(id);
     const { password, cpassword } = req.body;
     if (password == cpassword) {
         try {

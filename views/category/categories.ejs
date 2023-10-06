@@ -38,10 +38,15 @@
                             </div>
                             <% } %>
                             <% if(message.update){ %>
-                            <div class="alert alert-success" role="alert">
+                            <div class="alert alert-primary" role="alert">
                                 <%= message.update %>
                             </div>
                             <% } %>
+                            <% if(message.error){ %>
+                                <div class="alert alert-danger" role="alert">
+                                    <%= message.error %>
+                                </div>
+                                <% } %>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table">
@@ -60,18 +65,14 @@
                                                 <td><%=i%></td>
                                                 <td><%=val.category%></td>
                                                 <td>
-                                                    <button
-                                                        class="btn btn-danger">
-                                                        <a
-                                                            href="/deletecategory/<%=val.id%>"
-                                                            class="fa fa-trash text-white"></a>
-                                                    </button>
-                                                    <button
-                                                        class="btn btn-primary  ">
-                                                        <a
-                                                            href="/editcategory?id=<%=val.id%>"
-                                                            class="fa fa-edit text-white "></a>
-                                                    </button>
+                                                    <a
+                                                        href="/deletecategory/<%=val.id%>">
+                                                        <button
+                                                            class="btn btn-danger fa fa-trash text-white"></button></a>
+                                                    <a
+                                                        href="/editcategory?id=<%=val.id%>">
+                                                        <button
+                                                            class="btn btn-primary fa fa-edit text-white"></button></a>
                                                 </td>
                                             </tr>
                                             <%})%>

@@ -4,7 +4,6 @@ const subcategorytbl = require('../model/subcategory');
 const subcategory = async (req, res) => {
     try {
         let data = await subcategorytbl.find({}).populate('categoryId');
-        console.log(data);
         if (data) {
             return res.render('subcategory/subcategory', {
                 data
