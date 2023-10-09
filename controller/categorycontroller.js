@@ -3,6 +3,7 @@ const path = require('path');
 
 const categorytbl = require('../model/category');
 const subcategorytbl = require('../model/subcategory');
+const producttbl = require('../model/product');
 
 const categories = async (req, res) => {
     try {
@@ -53,6 +54,7 @@ const deletecategory = async (req, res) => {
         }
         else {
             await subcategorytbl.deleteMany({ categoryId: id });
+            await producttbl.deleteMany({ categoryId: id });
             req.flash('success', "Category and related subcategories deleted successfully");
         }
     } catch (err) {
@@ -60,7 +62,7 @@ const deletecategory = async (req, res) => {
     }
 
 }
- 
+
 const editcategory = async (req, res) => {
     try {
         id = req.query.id;
