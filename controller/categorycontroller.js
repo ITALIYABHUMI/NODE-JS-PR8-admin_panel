@@ -98,8 +98,45 @@ const updatecategory = async (req, res) => {
         return false;
     }
 }
-
-
+  
+const categorystatus = async (req, res) => {
+    try { 
+        id = req.params.id; 
+        console.log(id);
+        let data = await categorytbl.find({});
+        if (data[0].status == 1) {
+            let updatedata = await categorytbl. findByIdAndUpdate(id, {
+                status: 0
+            })
+            if (updatedata) {
+                req.flash('update', "Record successfully Updated");
+                return res.redirect('/categories')
+            } 
+            else {
+                req.flash('error', "Record not Updated");
+                return res.redirect('back')
+            }
+        }
+        else {
+            let updatedata = await categorytbl.findByIdAndUpdate(id, {
+                status: 1
+            })
+            console.log(updatedata);
+            if (updatedata) {
+                req.flash('update', "Record successfully Updated");
+                return res.redirect('/categories')
+            }
+            else {
+                req.flash('error', "Record not Updated");
+                return res.redirect('back')
+            }
+        }
+    }
+    catch (err) {
+        console.log(err);
+        return false;
+    }
+}
 
 
 
@@ -110,4 +147,5 @@ module.exports = {
     deletecategory,
     editcategory,
     updatecategory,
+    categorystatus
 }

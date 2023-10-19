@@ -33,8 +33,8 @@ routs.post('/editdata', indexcontroller.editdata);
 routs.get('/changepassword', indexcontroller.changepassword);
 routs.post('/passwordData', indexcontroller.passwordData);
 routs.get('/otp', indexcontroller.otp);
-routs.post('/otpdata',indexcontroller.otpdata);
-routs.get('/newpassword',  indexcontroller.newpassword);
+routs.post('/otpdata', indexcontroller.otpdata);
+routs.get('/newpassword', indexcontroller.newpassword);
 routs.post('/updatepassword', passport.checkAuthentication, indexcontroller.updatepassword);
 routs.get('/logout', indexcontroller.logout);
 
@@ -45,6 +45,7 @@ routs.post('/categoriesAdd', passport.checkAuthentication, categorycontroller.ca
 routs.get('/deletecategory/:id', passport.checkAuthentication, categorycontroller.deletecategory);
 routs.get('/editcategory', passport.checkAuthentication, categorycontroller.editcategory);
 routs.post('/updatecategory', passport.checkAuthentication, categorycontroller.updatecategory);
+routs.get('/categorystatus/:id', passport.checkAuthentication, categorycontroller.categorystatus);
 
 routs.get('/subcategory', passport.checkAuthentication, subcategorycontroller.subcategory);
 routs.get('/addsubcategory', passport.checkAuthentication, subcategorycontroller.addsubcategory);
